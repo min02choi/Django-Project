@@ -3,6 +3,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 
+# model: 데이터베이스의 구조라고 생각하면 됨
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')

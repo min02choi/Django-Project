@@ -1,0 +1,8 @@
+<h1>{{ question.question_text }}</h1>
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }}</li>
+{% endfor %}
+</ul>
+
+<!-- question이 외래 키인 (choice) 요소에 대해서 리스트를 전부 불러와서 for 문에서 전부 출력해줌 -->
