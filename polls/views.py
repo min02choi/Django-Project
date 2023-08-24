@@ -11,13 +11,16 @@ from django.views import generic
 from django.urls import reverse
 from .models import Question, Choice
 
+from django.utils import timezone
+
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
     context_object_name = "latest_question_list"
 
     def get_queryset(self):
         """Return the last five published questions."""
-        return Question.objects.order_by("-pub_date")[:5]
+        # __lte(less then equal): 작은것을 가져오게 하는 장고의 내장 함수(필터)
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:5]
 
 
 class DetailView(generic.DetailView):
